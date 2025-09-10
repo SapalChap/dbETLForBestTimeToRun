@@ -9,13 +9,6 @@
       "path": "/api/etl",
       "schedule": "0 10 * * *"
     }
-  ],
-  "env": {
-    "SUPABASE_URL": "@SUPABASE_URL",
-    "SUPABASE_KEY": "@SUPABASE_KEY", 
-    "OPEN_WEATHER_KEY": "@OPEN_WEATHER_KEY",
-    "OPEN_UV_KEY": "@OPEN_UV_KEY",
-    "API_NINJAS_KEY": "@API_NINJAS_KEY"
-  }
+  ]
 }
   
