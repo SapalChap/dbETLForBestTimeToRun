@@ -139,25 +139,28 @@ def etl():
         #LOAD(L)
 
         #load air quality data 
-
         rows = [{"timestamp": ts, "aqi": aqi, "city": city} for ts, aqi, city in aq_data_for_postgres]
 
-        response = supabase.table("air_quality_data").insert(rows).execute()
+        response = supabase.table("air_quality_data").upsert(
+            rows,
+            on_conflict="timestamp,city"
+        ).execute()
 
         #load weather data
-
         rows = [{"timestamp": ts, "temperature": temp, "city": city} for ts, temp, city in weather_data_for_postgres]
 
-        #insert
-
-        response = supabase.table("weather_data").insert(rows).execute()
-
+        response = supabase.table("weather_data").upsert(
+            rows,
+            on_conflict="timestamp,city"
+        ).execute()
 
         #load uv data
-
         rows = [{"timestamp": ts, "uv": uv, "city": city} for ts, uv, city in uv_data_for_postgres]
 
-        response = supabase.table("uv_data").insert(rows).execute()
+        response = supabase.table("uv_data").upsert(
+            rows,
+            on_conflict="timestamp,city"
+        ).execute()
 
 
 
