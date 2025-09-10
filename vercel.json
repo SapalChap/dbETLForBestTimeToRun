@@ -1,14 +1,21 @@
 {
-    "functions": {
-      "api/etl.py": {
-        "runtime": "@vercel/python"
-      }
-    },
-    "crons": [
-      {
-        "path": "/api/etl",
-        "schedule": "0 10 * * *"
-      }
-    ]
+  "functions": {
+    "api/etl.py": {
+      "runtime": "@vercel/python@3.9.16"
+    }
+  },
+  "crons": [
+    {
+      "path": "/api/etl",
+      "schedule": "0 10 * * *"
+    }
+  ],
+  "env": {
+    "SUPABASE_URL": "@supabase_url",
+    "SUPABASE_KEY": "@supabase_key", 
+    "OPEN_WEATHER_KEY": "@open_weather_key",
+    "OPEN_UV_KEY": "@open_uv_key",
+    "API_NINJAS_KEY": "@api_ninjas_key"
   }
+}
   
