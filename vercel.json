@@ -1,7 +1,7 @@
 {
     "functions": {
       "api/etl.py": {
-        "runtime": "python3.11"
+        "runtime": "python3.10"
       }
     },
     "crons": [
