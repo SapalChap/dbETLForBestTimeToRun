@@ -1,12 +1,27 @@
 
+import os
+import sys
+from pathlib import Path
+
 import requests
 from datetime import datetime, timezone
 from supabase import create_client, Client
-from config import SUPABASE_KEY, SUPABASE_URL
-from config import OPEN_WEATHER_KEY, OPEN_UV_KEY
+
+
+project_root = Path(__file__).resolve().parent
+sys.path.append(str(project_root))
+
 from helper_functions import get_coordinates, get_timezone_offset, convert_to_local_time
 
-def etl():
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_KEY = os.getenv("SUPABASE_KEY")
+OPEN_WEATHER_KEY = os.getenv("OPEN_WEATHER_KEY")
+OPEN_UV_KEY = os.getenv("OPEN_UV_KEY")
+
+# Add project root to sys.path so helper_functions.py can be imported
+
+
+def run_etl():
 
     supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
@@ -163,7 +178,5 @@ def etl():
         ).execute()
 
 
-
-
 if __name__ == "__main__":
-    etl()
+    run_etl()

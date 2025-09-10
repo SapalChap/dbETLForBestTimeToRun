@@ -1,7 +1,12 @@
+import os
 import requests
-from config import API_NINJAS_KEY
 from datetime import datetime, timedelta
-from config import OPEN_WEATHER_KEY
+
+
+API_NINJAS_KEY = os.getenv("API_NINJAS_KEY")
+OPEN_WEATHER_KEY = os.getenv("OPEN_WEATHER_KEY")
+OPEN_UV_KEY = os.getenv("OPEN_UV_KEY")
+
 
 def get_coordinates(city):
     # Input validation for security
